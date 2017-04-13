@@ -52,7 +52,3 @@ ggplotly(qTraffic)
 ### Using an iframe
 <iframe src="https://plot.ly/~simbosky/0.embed" width="800" height="600" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
 
-
-<iframe scrolling='no' seamless='seamless' style='border:none'
-src='https://plot.ly/~simbosky/0' width='800' height='500'></iframe>
-
