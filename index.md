@@ -1,7 +1,7 @@
 ---
 title       : Playing with plotly 
-subtitle    : A first go with plotly for coursera assignment
-author      : Simon C
+subtitle    : A first go with plotly for coursera assignment 13/04/2017
+author      : Simon C 
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -44,7 +44,7 @@ qTraffic <- qplot(Type, data = traffic, fill=Crossing_Facility,
 ggplotly(qTraffic)
 ```
 
-![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
 
 ---
 
