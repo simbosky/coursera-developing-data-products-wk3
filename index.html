@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Playing with plotly</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Playing with plotly">
+  <meta name="author" content="Simon C">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Playing with plotly</h1>
+    <h2>A first go with plotly for coursera assignment</h2>
+    <p>Simon C<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Loading the data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We will use the Manchester traffic signals dataset.<br>
+Firsly we need to load our libraries and do some basic tidying.</p>
+
+<pre><code class="r">library(plotly)
+traffic &lt;- read.csv(&quot;../TrafficSignals.csv&quot;)
+</code></pre>
+
+<p>A quick tidy.  </p>
+
+<pre><code class="r">traffic$Crossing_Facility &lt;- gsub(&quot;P(ed|ED).*&quot;,&quot;PEDESTRIAN&quot;, traffic$Crossing_Facility)
+traffic$Crossing_Facility &lt;- gsub(&quot;P(uf|UF).*&quot;,&quot;PUFFIN&quot;, traffic$Crossing_Facility)
+traffic$Crossing_Facility[traffic$Crossing_Facility==&quot;&quot;] &lt;- &quot;NA&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Let&#39;s plot!</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qTraffic &lt;- qplot(Type, data = traffic, fill=Crossing_Facility, 
+                  xlab=&quot;Crossing Type&quot;, ylab=&quot;Number&quot;)+
+  theme(axis.text.x = element_text(angle=90))+labs(fill=&quot;Facility&quot;)
+
+ggplotly(qTraffic)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The interactive chart</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Using an iframe</h3>
+
+<iframe src="https://plot.ly/~simbosky/0.embed" width="800" height="600" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
+<iframe scrolling='no' seamless='seamless' style='border:none'
+src='https://plot.ly/~simbosky/0' width='800' height='500'></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Loading the data'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Let&#39;s plot!'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The interactive chart'>
+         3
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
